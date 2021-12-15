@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'pages#home'
+  root to: 'root#home'
 
   get 'admin/workers/all', to: 'admin#workers_index'
   get 'admin/workers/new', to: 'admin#workers_new'

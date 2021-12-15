@@ -1,0 +1,17 @@
+<div class="justify content center"style="margin-top:25%";>
+  <%= form_with url: shifts_new_path(model: @worker, local: true) do |f| %>
+    <div class="control-group">
+      <div class="controls">
+          <%= collection_select(:shift, :worker_id, Worker.all, :id, :name, {:multiple => false}, class:"custom-select custom-select-lg text-center mb-4" ) %>
+      </div>
+    </div>
+    <div class="control-group mt-4 mb-4">
+      <div class="controls">
+        <%= f.submit class: 'btn btn-lg btn-outline-success mr-5',data: { confirm: "Ønsker du at tjekke ind?" }, name:"ind",value:"Tjek ind" %>
+        <%= f.submit class: 'btn btn-lg btn-outline-warning',data: { confirm: "Ønsker du at tjekke ud?"}, name:"ud",value:"Tjek ud" %>
+      </div>
+    </div>
+  <% end %>
+  <hr>
+</div>
+
