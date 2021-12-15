@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :path => '', :path_names => { :sign_in => "admin", :sign_out => "logout" }
   root to: 'root#home'
 
   get 'admin/workers/all', to: 'admin#workers_index'

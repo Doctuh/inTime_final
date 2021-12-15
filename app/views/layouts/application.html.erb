@@ -12,9 +12,16 @@
 </head>
 
 <body>
+  <%= render 'layouts/navbar' %>
+  <% if flash[:notice] %>
+  <div class="alert alert-success container" role="alert">
+    <p class="notice"><%= notice %></p>
+  </div>
+  <% end %>
   <div class="container">
     <%= yield %>
   </div>
+  <%= render 'layouts/footer' %>
 </body>
 
 </html>

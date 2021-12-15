@@ -1,0 +1,69 @@
+<div class="text-center mt-4">
+      <%= form_tag admin_shifts_search_path, method: :get do %>
+      <%= text_field_tag 'search[date_from]', @search.date_from %>
+      <%= text_field_tag 'search[date_to]', @search.date_to %>
+      <br>
+      <%= submit_tag 'Søg',class: "btn btn-medium btn-white btn-outline-success mt-3" %>
+      <% end %>
+</div>
+<hr>
+
+<% if @shifts.any? %>
+<table class="table table-dark table-bordered">
+  <% @shifts.each do |s| %>
+  <% if s.check_out_time == nil %>
+  <thead>
+    <tr class="table-danger">
+      <th scope="col" style="color:black;" class="text-center">ID# <%= s.id %></th>
+      <th scope="col" style="color:black;" class="text-center">NAVN</th>
+      <th scope="col" style="color:black;" class="text-center">IND_DAG</th>
+      <th scope="col" style="color:black;" class="text-center">IND_DATO</th>
+      <th scope="col" style="color:black;" class="text-center">IND_TID</th>
+      <th scope="col" style="color:black;" class="text-center">UD_DAG</th>
+      <th scope="col" style="color:black;" class="text-center">UD_DATO</th>
+      <th scope="col" style="color:black;" class="text-center">UD_TID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-danger">
+      <th scope="row" style="color:black;" class="text-center">1</th>
+      <td style="color:black;" class="text-center"><%= s.worker.name %></td>
+      <td style="color:black;" class="text-center"><%= s.check_in_weekday %></td>
+      <td style="color:black;" class="text-center"><%= s.check_in_date %></td>
+      <td style="color:black;" class="text-center"><%= s.check_in_time %></td>
+      <td style="color:black;" class="text-center">Ikke afsluttet</td>
+      <td style="color:black;" class="text-center">Ikke afsluttet</td>
+      <td style="color:black;" class="text-center">Ikke afsluttet</td>
+    </tr>
+  </tbody>
+  <% else %>
+  <thead>
+    <tr class="table-success">
+      <th scope="col" style="color:black;" class="text-center">ID# <%= s.id %></th>
+      <th scope="col" style="color:black;" class="text-center">NAVN</th>
+      <th scope="col" style="color:black;" class="text-center">IND_DAG</th>
+      <th scope="col" style="color:black;" class="text-center">IND_DATO</th>
+      <th scope="col" style="color:black;" class="text-center">IND_TID</th>
+      <th scope="col" style="color:black;" class="text-center">UD_DAG</th>
+      <th scope="col" style="color:black;" class="text-center">UD_DATO</th>
+      <th scope="col" style="color:black;" class="text-center">UD_TID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-success">
+      <td style="color:black;" class="text-center"><%= s.id %></td>
+      <td style="color:black;" class="text-center"><%= s.worker.name %></td>
+      <td style="color:black;" class="text-center"><%= s.check_in_weekday %></td>
+      <td style="color:black;" class="text-center"><%= s.check_in_date %></td>
+      <td style="color:black;" class="text-center"><%= s.check_in_time %></td>
+      <td style="color:black;" class="text-center"><%= s.check_out_weekday %></td>
+      <td style="color:black;" class="text-center"><%= s.check_out_date %></td>
+      <td style="color:black;" class="text-center"><%= s.check_out_time %></td>
+    </tr>
+  </tbody>
+  <% end %>
+  <%end%>
+</table>
+<%else%>
+<h4 class="text-center">Ingen vagter for valgte datoer</h4>
+<%end%>

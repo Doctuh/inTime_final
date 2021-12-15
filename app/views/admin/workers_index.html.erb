@@ -1,0 +1,15 @@
+<div class="mt-1">
+    <% if @workers.any? %>
+    <% @workers.each do | worker | %>
+    <div class="card">
+        <div class="card-header">
+            <p class="card-title">
+                <%= worker.name %>
+                <%= link_to "Slet medarbejder", admin_worker_delete_path(worker), method: :delete, data: { confirm: 'Er du sikker på at du vil slette vedkommende?'}, class:"float-right btn btn-sm btn-danger" %>
+                <%= link_to "Se medarbejders vagter", admin_shifts_show_path(worker), class:"float-right btn btn-sm btn-success mr-1" %>
+            </p>
+        </div>
+    </div>
+    <% end %>
+    <% end %>
+</div>

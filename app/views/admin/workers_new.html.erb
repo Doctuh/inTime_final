@@ -1,0 +1,17 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-4 ">
+    <%= render 'shared/errors', obj: @worker %>
+    <%= form_with(model: @worker, url: admin_workers_new_path,  class: "shadow p-3 mb-3 bg-white rounded", local: true) do |f| %>
+    <div class="form-group row">
+      <%= f.label :navn, class: "col-2 col-form-label, text-dark mt-4" %>
+      <div class="col-10">
+        <%= f.text_field :name, class: "form-control shadow rounded text-dark mb-4 mt-3", placeholder: "Medarbejderens fulde navn" %>
+      </div>
+    </div>
+
+    <div class="form-group row justify-content-center">
+      <%= f.submit "Opret medarbejder", class: 'btn btn-outline-success btn-medium ml-5', method: :post %>
+    </div>
+    <%end%>
+  </div>
+</div>
